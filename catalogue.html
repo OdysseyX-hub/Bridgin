@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRIDG'IN SOLUTIONS - Catalogue de Formations</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        /* Header */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Bouton Mon Compte */
+        .account-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .account-btn {
+            background: none;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .account-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .account-icon {
+            font-size: 20px;
+        }
+        
+        /* Menu déroulant */
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: #34495e;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .menu-item:hover {
+            background: #f8f9fa;
+            color: #3498db;
+        }
+        
+        .menu-item i {
+            width: 24px;
+            text-align: center;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: #eee;
+            margin: 5px 0;
+        }
+        
+        .logout-btn {
+            color: #e74c3c;
+        }
+        
+        .logout-btn:hover {
+            background: #fdeaea;
+        }
+
+        /* Filtres */
+        .filters {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .filter-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        
+        /* Catalogue */
+        .catalogue {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .formation-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .formation-image {
+            height: 180px;
+            background-color: #ecf0f1;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .formation-content {
+            padding: 20px;
+        }
+        
+        .formation-title {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .formation-category {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .formation-description {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .formation-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .formation-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #3498db;
+            color: #3498db;
+        }
+        
+        .btn-outline:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .modal-title {
+            margin-top: 0;
+        }
+        
+        .download-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .download-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .catalogue {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                width: 100%;
+                right: 20px;
+                left: 20px;
+            }
+        }
+    </style>
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">BRIDG'IN SOLUTIONS</div>
+            <div class="account-container">
+                <button class="account-btn" id="accountBtn">
+                    <i class="fas fa-user-circle account-icon"></i>
+                    <span>Mon compte</span>
+                </button>
+                <div class="dropdown-menu" id="accountDropdown">
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-tachometer-alt"></i>Tableau de bord
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-book-open"></i>Mes formations
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-file-certificate"></i>Mes certifications
+                    </a>
+                    <div class="menu-divider"></div>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-user-cog"></i>Paramètres du compte
+                    </a>
+                    <div class="menu-divider"></div>
+                    <a href="index.html" class="menu-item logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>Catalogue de Formations</h1>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="domain">Domaine</label>
+                <select id="domain">
+                    <option value="">Tous les domaines</option>
+                    <option value="management">Management du Capital humain</option>
+                    <option value="strategie">Stratégie & Gouvernance</option>
+                    <option value="communication">Communication & Relations Interpersonnelles</option>
+                    <option value="gestion">Gestion Administrative</option>
+                    <option value="leadership">Management & Leadership</option>
+                    <option value="vente">Vente</option>
+                    <option value="client">Expérience client</option>
+                    <option value="supply">Supply Chain Management</option>
+                    <option value="finance">Finance d'entreprise</option>
+                    <option value="bureautique">Bureautique</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="format">Format</label>
+                <select id="format">
+                    <option value="">Tous les formats</option>
+                    <option value="presentiel">Présentiel</option>
+                    <option value="virtuel">Virtuel</option>
+                    <option value="hybride">Hybride</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="level">Niveau</label>
+                <select id="level">
+                    <option value="">Tous les niveaux</option>
+                    <option value="initiation">Initiation</option>
+                    <option value="perfectionnement">Perfectionnement</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="search">Recherche par mot-clé</label>
+                <input type="text" id="search" placeholder="Entrez un mot-clé...">
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn btn-secondary">Réinitialiser</button>
+                <button class="btn btn-primary">Filtrer</button>
+            </div>
+        </div>
+        
+        <div class="catalogue" id="formations-container">
+            <!-- Les cartes de formation seront générées ici par JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Modal pour les détails de formation -->
+    <div class="modal" id="formation-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-formation-title">Titre de la formation</h2>
+                <span class="formation-category" id="modal-formation-category">Catégorie</span>
+            </div>
+            
+            <div class="modal-body">
+                <h3>Objectifs de la formation</h3>
+                <p id="modal-formation-objectives">Contenu des objectifs...</p>
+                
+                <h3>Description</h3>
+                <p id="modal-formation-description">Description détaillée...</p>
+                
+                <div class="formation-meta">
+                    <div><strong>Durée:</strong> <span id="modal-formation-duration">2 jours</span></div>
+                    <div><strong>Format:</strong> <span id="modal-formation-format">Présentiel</span></div>
+                    <div><strong>Niveau:</strong> <span id="modal-formation-level">Perfectionnement</span></div>
+                    <div><strong>Prix:</strong> <span id="modal-formation-price">€990 HT</span></div>
+                </div>
+                
+                <div class="download-section">
+                    <h3>Documents disponibles</h3>
+                    <div class="download-items" id="download-items">
+                        <!-- Les éléments de téléchargement seront ajoutés ici -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formation-actions" style="margin-top: 20px;">
+                <button class="btn btn-outline">Demander un devis</button>
+                <button class="btn btn-primary">S'inscrire</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Données des formations (simulées)
+        const formations = [
+            {
+                id: 1,
+                title: "Leadership et gestion d'équipe",
+                category: "Management & Leadership",
+                description: "Acquérez les compétences essentielles pour mener une équipe avec efficacité et inspiration.",
+                objectives: "Maîtriser les techniques de motivation, gérer les conflits, développer son leadership situationnel.",
+                duration: "2 jours",
+                format: "Présentiel",
+                level: "Perfectionnement",
+                price: "€990 HT",
+                image: "https://via.placeholder.com/400x200?text=Leadership",
+                documents: [
+                    { name: "Programme détaillé", type: "pdf", url: "#" },
+                    { name: "Brochure pédagogique", type: "pdf", url: "#" },
+                    { name: "Test d'auto-évaluation", type: "doc", url: "#" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Communication interpersonnelle",
+                category: "Communication",
+                description: "Améliorez vos relations professionnelles grâce à une communication efficace.",
+                objectives: "Développer l'écoute active, adapter son discours, gérer les situations difficiles.",
+                duration: "1 jour",
+                format: "Virtuel",
+                level: "Initiation",
+                price: "€490 HT",
+                image: "https://via.placeholder.com/400x200?text=Communication",
+                documents: [
+                    { name: "Fiche technique", type: "pdf", url: "#" },
+                    { name: "Guide pratique", type: "pdf", url: "#" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Gestion de projet agile",
+                category: "Stratégie & Gouvernance",
+                description: "Méthodologies agiles pour une gestion de projet efficace et adaptative.",
+                objectives: "Comprendre les principes agiles, maîtriser Scrum, implémenter Kanban.",
+                duration: "3 jours",
+                format: "Hybride",
+                level: "Expert",
+                price: "€1490 HT",
+                image: "https://via.placeholder.com/400x200?text=Gestion+Projet",
+                documents: [
+                    { name: "Cahier des charges type", type: "pdf", url: "#" },
+                    { name: "Modèles de tableaux", type: "xls", url: "#" },
+                    { name: "Checklist de démarrage", type: "pdf", url: "#" },
+                    { name: "Cas pratiques", type: "pdf", url: "#" }
+                ]
+            },
+            {
+                id: 4,
+                title: "Excel avancé",
+                category: "Bureautique",
+                description: "Maîtrisez les fonctions avancées d'Excel pour automatiser vos tâches.",
+                objectives: "Utiliser les tableaux croisés dynamiques, créer des macros, automatiser des calculs complexes.",
+                duration: "1 jour",
+                format: "Présentiel",
+                level: "Perfectionnement",
+                price: "€590 HT",
+                image: "https://via.placeholder.com/400x200?text=Excel",
+                documents: [
+                    { name: "Fiches mémo", type: "pdf", url: "#" },
+                    { name: "Fichiers d'exercices", type: "zip", url: "#" }
+                ]
+            },
+            {
+                id: 5,
+                title: "Négociation commerciale",
+                category: "Vente",
+                description: "Techniques avancées pour négocier avec succès dans un contexte commercial.",
+                objectives: "Préparer une négociation, gérer les objections, conclure efficacement.",
+                duration: "2 jours",
+                format: "Présentiel",
+                level: "Perfectionnement",
+                price: "€1090 HT",
+                image: "https://via.placeholder.com/400x200?text=Négociation",
+                documents: [
+                    { name: "Grille de préparation", type: "pdf", url: "#" },
+                    { name: "Scripts types", type: "pdf", url: "#" },
+                    { name: "Étude de cas", type: "pdf", url: "#" }
+                ]
+            },
+            {
+                id: 6,
+                title: "Transformation digitale RH",
+                category: "Stratégie & Gouvernance",
+                description: "Accompagner la transformation digitale des services RH.",
+                objectives: "Comprendre les enjeux, choisir les bons outils, manager le changement.",
+                duration: "2 jours",
+                format: "Virtuel",
+                level: "Expert",
+                price: "€1290 HT",
+                image: "https://via.placeholder.com/400x200?text=RH+Digital",
+                documents: [
+                    { name: "Benchmark outils", type: "pdf", url: "#" },
+                    { name: "Checklist implémentation", type: "pdf", url: "#" },
+                    { name: "Modèle de roadmap", type: "pdf", url: "#" }
+                ]
+            }
+        ];
+        
+        // Gestion du menu déroulant du compte
+        const accountBtn = document.getElementById('accountBtn');
+        const accountDropdown = document.getElementById('accountDropdown');
+        
+        accountBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            accountDropdown.classList.toggle('active');
+        });
+        
+        document.addEventListener('click', function() {
+            accountDropdown.classList.remove('active');
+        });
+        
+        accountDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Afficher les formations dans le catalogue
+        function displayFormations(formationsToDisplay) {
+            const container = document.getElementById('formations-container');
+            container.innerHTML = '';
+            
+            formationsToDisplay.forEach(formation => {
+                const card = document.createElement('div');
+                card.className = 'formation-card';
+                card.innerHTML = `
+                    <div class="formation-image" style="background-image: url('${formation.image}')"></div>
+                    <div class="formation-content">
+                        <h3 class="formation-title">${formation.title}</h3>
+                        <span class="formation-category">${formation.category}</span>
+                        <p class="formation-description">${formation.description}</p>
+                        <div class="formation-meta">
+                            <div><strong>Durée:</strong> ${formation.duration}</div>
+                            <div><strong>Format:</strong> ${formation.format}</div>
+                        </div>
+                        <div class="formation-actions">
+                            <button class="btn btn-outline btn-small details-btn" data-id="${formation.id}">Détails</button>
+                            <button class="btn btn-primary btn-small">S'inscrire</button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            // Ajouter les événements aux boutons de détails
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const formationId = parseInt(this.getAttribute('data-id'));
+                    showFormationDetails(formationId);
+                });
+            });
+        }
+        
+        // Afficher les détails d'une formation dans le modal
+        function showFormationDetails(formationId) {
+            const formation = formations.find(f => f.id === formationId);
+            if (!formation) return;
+            
+            document.getElementById('modal-formation-title').textContent = formation.title;
+            document.getElementById('modal-formation-category').textContent = formation.category;
+            document.getElementById('modal-formation-objectives').textContent = formation.objectives;
+            document.getElementById('modal-formation-description').textContent = formation.description;
+            document.getElementById('modal-formation-duration').textContent = formation.duration;
+            document.getElementById('modal-formation-format').textContent = formation.format;
+            document.getElementById('modal-formation-level').textContent = formation.level;
+            document.getElementById('modal-formation-price').textContent = formation.price;
+            
+            // Afficher les documents téléchargeables
+            const downloadItemsContainer = document.getElementById('download-items');
+            downloadItemsContainer.innerHTML = '';
+            
+            formation.documents.forEach(doc => {
+                const icon = doc.type === 'pdf' ? '📄' : doc.type === 'doc' ? '📝' : doc.type === 'xls' ? '📊' : '📦';
+                
+                const item = document.createElement('div');
+                item.className = 'download-item';
+                item.innerHTML = `
+                    <div>
+                        ${icon} ${doc.name} (${doc.type.toUpperCase()})
+                    </div>
+                    <a href="${doc.url}" class="btn btn-outline btn-small" download>Télécharger</a>
+                `;
+                
+                downloadItemsContainer.appendChild(item);
+            });
+            
+            // Afficher le modal
+            document.getElementById('formation-modal').style.display = 'flex';
+        }
+        
+        // Filtrer les formations
+        function filterFormations() {
+            const domain = document.getElementById('domain').value.toLowerCase();
+            const format = document.getElementById('format').value.toLowerCase();
+            const level = document.getElementById('level').value.toLowerCase();
+            const search = document.getElementById('search').value.toLowerCase();
+            
+            const filtered = formations.filter(formation => {
+                return (domain === '' || formation.category.toLowerCase().includes(domain)) &&
+                       (format === '' || formation.format.toLowerCase().includes(format)) &&
+                       (level === '' || formation.level.toLowerCase().includes(level)) &&
+                       (search === '' || 
+                        formation.title.toLowerCase().includes(search) || 
+                        formation.description.toLowerCase().includes(search) ||
+                        formation.category.toLowerCase().includes(search));
+            });
+            
+            displayFormations(filtered);
+        }
+        
+        // Réinitialiser les filtres
+        function resetFilters() {
+            document.getElementById('domain').value = '';
+            document.getElementById('format').value = '';
+            document.getElementById('level').value = '';
+            document.getElementById('search').value = '';
+            displayFormations(formations);
+        }
+        
+        // Événements
+        document.querySelector('.filter-actions .btn-primary').addEventListener('click', filterFormations);
+        document.querySelector('.filter-actions .btn-secondary').addEventListener('click', resetFilters);
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('formation-modal').style.display = 'none';
+        });
+        
+        // Fermer le modal en cliquant à l'extérieur
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('formation-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Initialiser l'affichage
+        document.addEventListener('DOMContentLoaded', function() {
+            displayFormations(formations);
+        });
+    </script>
+</body>
+</html>

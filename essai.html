@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRIDG'IN SOLUTIONS - Menu Compte</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        /* Style du bouton principal */
+        .account-menu {
+            position: relative;
+            display: inline-block;
+            list-style: none;
+        }
+        
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .account-btn:hover {
+            background-color: #34495e;
+        }
+        
+        .account-btn i {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+        
+        /* Style du sous-menu */
+        .simple-submenu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            min-width: 220px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            list-style: none;
+        }
+        
+        .account-menu:hover .simple-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .account-menu:hover .account-btn i {
+            transform: rotate(180deg);
+        }
+        
+        .simple-submenu li {
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .simple-submenu li:last-child {
+            border-bottom: none;
+        }
+        
+        .simple-submenu a {
+            display: block;
+            padding: 12px 15px;
+            color: #34495e;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .simple-submenu a:hover {
+            background-color: #f8f9fa;
+            color: #3498db;
+            padding-left: 20px;
+        }
+        
+        .simple-submenu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Style spécifique pour le bouton de déconnexion */
+        .simple-submenu li:last-child a {
+            color: #e74c3c;
+        }
+        
+        .simple-submenu li:last-child a:hover {
+            background-color: #fdeaea;
+        }
+        
+        /* Logo BRIDG'IN */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Logo BRIDG'IN -->
+    <div class="logo">
+        <div class="logo-img">B</div>
+        <div class="logo-text">BRIDG'IN SOLUTIONS</div>
+    </div>
+    
+    <!-- Menu Compte -->
+    <li class="account-menu">
+        <button class="account-btn">
+            <i class="fas fa-user-circle"></i>
+            Mon compte
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="simple-submenu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Tableau de bord
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-certificate"></i>
+                    Mes certifications
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-book-open"></i>
+                    Mes formations
+                </a>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Déconnexion
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <script>
+        // Optionnel : Ajouter une classe active au clic pour mobile
+        document.querySelector('.account-btn').addEventListener('click', function() {
+            this.parentElement.classList.toggle('active');
+        });
+        
+        // Fermer le menu quand on clique ailleurs
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.account-menu')) {
+                document.querySelector('.account-menu').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
