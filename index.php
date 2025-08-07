@@ -8,103 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Acceuil.css">
     <style>
-          
-        
-        /* Style du bouton principal */
-        .account-menu {
-            position: relative;
-            display: inline-block;
-            list-style: none;
-        }
-        
-        .account-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-        
-        .account-btn:hover {
-            background-color: #34495e;
-        }
-        
-        .account-btn i {
-            font-size: 12px;
-            transition: transform 0.3s;
-        }
-        
-        /* Style du sous-menu */
-        .simple-submenu {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: white;
-            min-width: 220px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            list-style: none;
-        }
-        
-        .account-menu:hover .simple-submenu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .account-menu:hover .account-btn i {
-            transform: rotate(180deg);
-        }
-        
-        .simple-submenu li {
-            border-bottom: 1px solid #f1f1f1;
-        }
-        
-        .simple-submenu li:last-child {
-            border-bottom: none;
-        }
-        
-        .simple-submenu a {
-            display: block;
-            padding: 12px 15px;
-            color: #34495e;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .simple-submenu a:hover {
-            background-color: #f8f9fa;
-            color: #3498db;
-            padding-left: 20px;
-        }
-        
-        .simple-submenu a i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        /* Style spécifique pour le bouton de déconnexion */
-        .simple-submenu li:last-child a {
-            color: #e74c3c;
-        }
-        
-        .simple-submenu li:last-child a:hover {
-            background-color: #fdeaea;
-        }
+       
     </style>
 </head>
 <body>
@@ -114,120 +18,80 @@
             <nav>
                 <div class="logo">BRIDG'<span>IN</span></div>
                 <ul class="menu" id="menu">
-    <li><a href="#">Accueil</a></li>
+    <li><a href="index.php">Accueil</a></li>
     
     <li>
-        <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Solutions <i class="fas fa-chevron-down"></i></a>
         <div class="submenu">
             <div class="submenu-column">
                 <h4>Formations</h4>
                 <ul>
-                    <li><a href="catalogue.html">Catalogue</a></li>
-                    <li><a href="#">Certifiantes</a></li>
-                    <li><a href="#">Sur-mesure</a></li>
+                    <li><a href="connexion.php">Catalogue</a></li>
+                    <li><a href="connexion.php">Certifiantes</a></li>
+                    <li><a href="connexion.php">Sur-mesure</a></li>
                 </ul>
             </div>
             <div class="submenu-column">
                 <h4>Conseil</h4>
                 <ul>
-                    <li><a href="#">Stratégie RH</a></li>
-                    <li><a href="#">Transformation</a></li>
+                    <li><a href="connexion.php">Stratégie RH</a></li>
+                    <li><a href="connexion.php">Transformation</a></li>
                 </ul>
             </div>
         </div>
     </li>
     
     <li>
-        <a href="#">Méthodologie <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Méthodologie <i class="fas fa-chevron-down"></i></a>
         <ul class="simple-submenu">
-            <li><a href="#">Notre approche</a></li>
-            <li><a href="#">Outils</a></li>
-            <li><a href="#">Chiffres clés</a></li>
+            <li><a href="connexion.php">Notre approche</a></li>
+            <li><a href="connexion.php">Outils</a></li>
+            <li><a href="connexion.php">Chiffres clés</a></li>
         </ul>
     </li>
     
     <li>
-        <a href="#">Impact <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Impact <i class="fas fa-chevron-down"></i></a>
     <ul class="simple-submenu">
-            <li><a href="#">Témoignage</a></li>
-            <li><a href="#">Etudes de cas </a></li>
-            <li><a href="#">indicateurs</a></li>
+            <li><a href="connexion.php">Témoignage</a></li>
+            <li><a href="connexion.php">Etudes de cas </a></li>
+            <li><a href="connexion.php">indicateurs</a></li>
         </ul>
     </li>
 
     <li>
-        <a href="#">Ressources <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Équipe <i class="fas fa-chevron-down"></i></a>
+    <ul class="simple-submenu">
+            <li><a href="connexion.php">Présentation de l'équipe</a></li>
+            <li><a href="connexion.php">recrutement</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="connexion.php">Ressources <i class="fas fa-chevron-down"></i></a>
         <ul class="simple-submenu">
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Webinars</a></li>
-            <li><a href="#">Livres Blancs</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="connexion.php">Blog</a></li>
+            <li><a href="#connexion.php">Webinars</a></li>
+            <li><a href="connexion.php">Livres Blancs</a></li>
+            <li><a href="connexion.php">FAQ</a></li>
         </ul>
     </li>
     <li>
-        <a href="#">Actualités <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Actualités <i class="fas fa-chevron-down"></i></a>
         <ul class="simple-submenu">
-            <li><a href="#">Agenda</a></li>
-            <li><a href="#">tendances métiers</a></li>
-            <li><a href="#">Newsletter</a></li>
+            <li><a href="connexion.php">Agenda</a></li>
+            <li><a href="connexion.php">tendances métiers</a></li>
+            <li><a href="connexion.php">Newsletter</a></li>
         </ul>
     </li>
     <li>
-        <a href="#">Contact <i class="fas fa-chevron-down"></i></a>
+        <a href="connexion.php">Contact <i class="fas fa-chevron-down"></i></a>
         <ul class="simple-submenu">
-            <li><a href="#">Formulaire intelligent</a></li>
-            <li><a href="#">chatbot</a></li>
-            <li><a href="#">Prises de rendez-vous</a></li>
+            <li><a href="connexion.php">Formulaire intelligent</a></li>
+            <li><a href="connexion.php">chatbot</a></li>
+            <li><a href="connexion.php">Prises de rendez-vous</a></li>
         </ul>
     </li>
-     <!-- Menu Compte -->
-    <li class="account-menu">
-        <button class="account-btn">
-            <i class="fas fa-user-circle"></i>
-            Mon compte
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <ul class="simple-submenu">
-            <li>
-                <a href="#">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-certificate"></i>
-                    Attestations
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-book-open"></i>
-                    Formations
-                </a>
-            </li>
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Déconnexion
-                </a>
-            </li>
-        </ul>
-    </li>
-    
-    <script>
-        // Optionnel : Ajouter une classe active au clic pour mobile
-        document.querySelector('.account-btn').addEventListener('click', function() {
-            this.parentElement.classList.toggle('active');
-        });
-        
-        // Fermer le menu quand on clique ailleurs
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.account-menu')) {
-                document.querySelector('.account-menu').classList.remove('active');
-            }
-        });
-    </script>
 </ul>       
                 <div class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -241,6 +105,8 @@
         <div class="hero-content">
             <h1>Notre ambition est votre réussite</h1>
             <p>Découvrez nos solutions sur-mesure en formation, conseil et team building pour transformer vos compétences et votre organisation</p>
+            <a href="connexion.php" class="cta">Connexion</a>
+            <a href="inscription.php" class="cta">Inscription</a>
         </div>
 
         <!-- Search Bar -->
@@ -290,7 +156,7 @@
                     <div class="service-content">
                         <h3>Formations</h3>
                         <p>Développez vos compétences avec nos formations certifiantes adaptées à vos besoins professionnels.</p>
-                        <a href="#" class="service-link">
+                        <a href="connexion.php" class="service-link">
                             Découvrir <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -302,7 +168,7 @@
                     <div class="service-content">
                         <h3>Conseil RH</h3>
                         <p>Accompagnement stratégique pour transformer vos défis RH en leviers de performance.</p>
-                        <a href="#" class="service-link">
+                        <a href="connexion.php" class="service-link">
                             En savoir plus <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -314,7 +180,7 @@
                     <div class="service-content">
                         <h3>Dynamique d'équipe</h3>
                         <p>Renforcez la cohésion et la performance collective avec nos séminaires sur mesure.</p>
-                        <a href="#" class="service-link">
+                        <a href="connexion.php" class="service-link">
                             Explorer <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -437,12 +303,12 @@
                     <h3>Leadership avancé</h3>
                     <div class="training-meta">
                         <span><i class="far fa-clock"></i> 24h</span>
-                        <span><i class="fas fa-Francs-sign"></i> 20000 F CFA</span>
+                        <span><i class="fas fa-franc-sign"></i> 20000 F CFA</span>
                     </div>
                     <p>Acquérez les compétences pour diriger des équipes performantes...</p>
                     <div class="training-actions">
-                        <a href="#" class="details-btn">Détails</a>
-                        <a href="choix.php" class="choose-btn">Choisir</a>
+                        <a href="connexion.php" class="details-btn">Détails</a>
+                        <a href="connexion.php" class="choose-btn">Choisir</a>
                     </div>
                 </div>
             </div>
@@ -455,12 +321,12 @@
                     <h3>Leadership avancé</h3>
                     <div class="training-meta">
                         <span><i class="far fa-clock"></i> 24h</span>
-                        <span><i class="fas fa-Francs-sign"></i> 20000 F CFA</span>
+                        <span><i class="fas fa-franc-sign"></i> 20000 F CFA</span>
                     </div>
                     <p>Acquérez les compétences pour diriger des équipes performantes...</p>
                     <div class="training-actions">
-                        <a href="#" class="details-btn">Détails</a>
-                        <a href="choix.php" class="choose-btn">Choisir</a>
+                        <a href="connexion.php" class="details-btn">Détails</a>
+                        <a href="connexion.php" class="choose-btn">Choisir</a>
                     </div>
                 </div>
             </div>
@@ -473,15 +339,16 @@
                     <h3>Leadership avancé</h3>
                     <div class="training-meta">
                         <span><i class="far fa-clock"></i> 24h</span>
-                        <span><i class="fas fa-Francs-sign"></i> 20000 F CFA</span>
+                        <span><i class="fas fa-franc-sign"></i> 20000 F CFA</span>
                     </div>
                     <p>Acquérez les compétences pour diriger des équipes performantes...</p>
                     <div class="training-actions">
-                        <a href="#" class="details-btn">Détails</a>
-                        <a href="choix.php" class="choose-btn">Choisir</a>
+                        <a href="connexion.php" class="details-btn">Détails</a>
+                        <a href="connexion.php" class="choose-btn">Choisir</a>
                     </div>
                 </div>
             </div>
+            <!-- Ajoutez d'autres cartes de formation ici -->
         </div>
     </div>
 </section>
@@ -567,14 +434,89 @@
     </footer>
 
     <!-- Help Bar -->
-    <div class="help-bar">
-        <button class="help-button whatsapp">
+         <div class="help-bar">
+        <!-- Bouton WhatsApp -->
+        <button class="help-button whatsapp" id="whatsappBtn">
             <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">Envoyer un message WhatsApp</span>
         </button>
-        <button class="help-button">
+        
+        <!-- Bouton Téléphone -->
+        <button class="help-button phone" id="phoneBtn">
             <i class="fas fa-phone"></i>
+            <span class="tooltip">Appeler notre équipe</span>
         </button>
     </div>
+
+    <script>
+        // Fonctionnalité WhatsApp
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            // Numéro de téléphone (format international sans espaces)
+            const phoneNumber = '237677114758';
+            
+            // Message prédéfini (encodé pour URL)
+            const defaultMessage = encodeURIComponent(
+                "Bonjour BRIDG'IN SOLUTIONS,\n\nJe vous contacte via votre site web. Pouvez-vous m'aider ?"
+            );
+            
+            // Ouvrir WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${defaultMessage}`, '_blank');
+            
+            // Analytics (optionnel)
+            console.log('WhatsApp button clicked');
+        });
+
+        // Fonctionnalité Appel téléphonique
+        document.getElementById('phoneBtn').addEventListener('click', function() {
+            // Numéro de téléphone (format international cliquable)
+            const phoneNumber = '+237677114758';
+            
+            // Confirmation avant d'appeler (sur desktop)
+            if (window.innerWidth > 768) {
+                const shouldCall = confirm(`Voulez-vous appeler le ${phoneNumber} ?`);
+                if (shouldCall) {
+                    window.location.href = `tel:${phoneNumber}`;
+                }
+            } else {
+                // Sur mobile, appel direct
+                window.location.href = `tel:${phoneNumber}`;
+            }
+            
+            // Analytics (optionnel)
+            console.log('Phone button clicked');
+        });
+
+        // Effet de vibration au clic
+        const buttons = document.querySelectorAll('.help-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+
+    <script>
+        // Animation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.help-button');
+            
+            buttons.forEach((button, index) => {
+                // Délai d'animation différent pour chaque bouton
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                }, index * 200);
+            });
+        });
+
+        // Désactiver l'animation pulse après le premier hover
+        const whatsappBtn = document.querySelector('.whatsapp');
+        whatsappBtn.addEventListener('mouseenter', function() {
+            this.classList.remove('pulse');
+        });
+        </script>
 
     <script>
         // Mobile Menu Toggle

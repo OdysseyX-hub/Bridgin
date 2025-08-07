@@ -37,7 +37,7 @@
                     <label for="remember">Se souvenir de moi</label>
                 </div>
                 
-                <button type="submit" class="login-btn" onclick="window.location.href='client.html'">
+                <button type="submit" class="login-btn" onclick="window.location.href='client.php'">
                     <i class="fas fa-sign-in-alt"></i> Se connecter
                 </button>
                 
@@ -58,7 +58,7 @@
             
             <div class="login-footer">
                 <a href="#">Mot de passe oublié ?</a> • 
-                <a href="inscription.html">Créer un compte</a>
+                <a href="inscription.php">Créer un compte</a>
             </div>
         </div>
     </div>
