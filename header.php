@@ -112,7 +112,6 @@
             cursor: pointer;
         }
 
-        /* Styles des menus déroulants */
         .menu > li {
             position: relative;
         }
@@ -175,7 +174,6 @@
             padding-left: 5px;
         }
 
-        /* Animation au survol */
         .menu > li:hover > a .fa-chevron-down {
             transform: rotate(180deg);
         }
@@ -187,7 +185,6 @@
             transform: translateY(0);
         }
 
-        /* Style du bouton compte - Version améliorée */
         .account-menu {
             position: relative;
             display: inline-block;
@@ -221,7 +218,6 @@
             transition: transform 0.3s;
         }
         
-        /* Style du sous-menu compte */
         .account-submenu {
             position: absolute;
             right: 0;
@@ -280,7 +276,6 @@
             font-size: 14px;
         }
         
-        /* Style spécifique pour le bouton de déconnexion */
         .account-submenu li:last-child a {
             color: var(--rouge);
         }
@@ -329,13 +324,12 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <div class="logo">BRIDG'<span>IN</span></div>
                 <ul class="menu" id="menu">
-                    <li><a href="client.php">Accueil</a></li>
+                    <li><a href="client.html">Accueil</a></li>
                     
                     <li>
                         <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
@@ -343,7 +337,7 @@
                             <div class="submenu-column">
                                 <h4>Formations</h4>
                                 <ul>
-                                    <li><a href="catalogue.php">Catalogue</a></li>
+                                    <li><a href="catalogue.html">Catalogue</a></li>
                                     <li><a href="#">Certifiantes</a></li>
                                     <li><a href="#">Sur-mesure</a></li>
                                 </ul>
@@ -404,7 +398,6 @@
                         </ul>
                     </li>
                     
-                    <!-- Menu Compte - Version améliorée -->
                     <li class="account-menu">
                         <button class="account-btn">
                             <i class="fas fa-user-circle"></i>
@@ -431,7 +424,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php">
+                                <a href="index.html">
                                     <i class="fas fa-sign-out-alt"></i>
                                     Déconnexion
                                 </a>
@@ -448,7 +441,6 @@
     </header>
 
     <script>
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const menu = document.getElementById('menu');
 
@@ -458,7 +450,6 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
